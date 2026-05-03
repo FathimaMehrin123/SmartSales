@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smartsales/features/customers/customer_detail_screen.dart';
 import 'package:smartsales/features/customers/customer_viewmodel.dart';
 
 class CustomerListScreen extends StatefulWidget {
@@ -62,8 +63,13 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                   subtitle: Text(customer.address),
                   trailing: Text(customer.phone),
                   onTap: () {
-                    // 👉 Next step: go to Customer Detail
-                  },
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => CustomerDetailScreen(customer: customer),
+    ),
+  );
+},
                 ),
               );
             },

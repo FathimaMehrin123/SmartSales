@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smartsales/features/auth/login_screen.dart';
+import 'package:smartsales/features/customers/customer_list_screen.dart';
 import 'package:smartsales/features/homescreen.dart';
 
 
@@ -23,16 +24,18 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> _start() async {
     await Future.delayed(const Duration(seconds: 2));
 
-    final prefs = await SharedPreferences.getInstance();
-    final userId = prefs.getInt('user_id');
+final prefs = await SharedPreferences.getInstance();
+
+final userId = prefs.getInt('user_id');
+final token = prefs.getString('token');
 
     if (!mounted) return;
 
-    if (userId != null) {
+    if (userId != null && token != null && token.isNotEmpty) {
       // Already logged in → Dashboard
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const DashboardScreen()),
+        MaterialPageRoute(builder: (_) => const CustomerListScreen()),
       );
     } else {
       // Not logged in → Login
@@ -48,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return const Scaffold(
       body: Center(
         child: Text(
-          "VanSales Pro",
+          "SmartSales",
           style: TextStyle(
             fontSize: 26,
             fontWeight: FontWeight.bold,

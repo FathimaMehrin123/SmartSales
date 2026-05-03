@@ -16,7 +16,7 @@ class CustomerModel {
       id: json['id'] ?? 0,
       name: json['name'] ?? '',
       address: json['address'] ?? '',
-      phone: json['phone'] ?? '',
+      phone: json['contact_number'] ?? '',
     );
   }
 }
