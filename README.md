@@ -1,16 +1,86 @@
-# smartsales
+# 📱 SmartSales Flutter App
 
-A new Flutter project.
+## 🚀 Overview
 
-## Getting Started
+SmartSales is a Flutter-based mobile application for managing van sales operations.
+It allows users to log in, manage customers, create invoices, and track sales efficiently.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 🔐 Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* User Authentication (Login)
+* Customer List & Details
+* Product List with Dynamic Units & Pricing
+* Add Products to Cart
+* Invoice Creation
+* VAT / NO VAT Calculation
+* Discount (Amount & Percentage)
+* Invoice List (Van Sales)
+* Clean UI with MVVM Architecture
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## 🛠️ Tech Stack
+
+* Flutter (UI)
+* Provider (State Management)
+* REST API Integration
+* SharedPreferences (Local Storage)
+
+---
+
+## 📂 Project Structure (MVVM)
+
+```
+lib/
+├── core/
+├── features/
+│   ├── auth/
+│   ├── customers/
+│   ├── products/
+│   ├── invoice/
+│   └── dashboard/
+```
+
+---
+
+## 🔌 API Integration
+
+The app uses the following APIs:
+
+1. Login
+2. Get Customers
+3. Get Products
+4. Get Product Types
+5. Get Product Detail
+6. Create Van Sale
+7. Van Sale List
+
+---
+
+
+
+## 🎯 Key Functionalities
+
+* Dynamic product pricing based on unit selection
+* Cart system with quantity management
+* Discount calculation (amount & percentage)
+* VAT calculation (5%)
+* Round-off handling
+* Clean UI similar to real POS apps
+
+---
+
+## ⚠️ Notes
+
+* Login is restricted to provided credentials
+* Error handling implemented for API failures
+* Clean and modular architecture used
+
+---
+
+## 👤 Developer
+
+Fathima Mehrin
+Flutter Developer
