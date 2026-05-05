@@ -84,8 +84,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smartsales/features/customers/customer_detail_screen.dart';
-import 'package:smartsales/features/customers/customer_viewmodel.dart';
+import 'package:smartsales/features/customers/view/customer_detail_screen.dart';
+import 'package:smartsales/features/customers/viewmodel/customer_viewmodel.dart';
 
 class CustomerListScreen extends StatefulWidget {
   const CustomerListScreen({super.key});

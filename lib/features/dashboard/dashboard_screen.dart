@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smartsales/features/customers/customer_list_screen.dart';
-import 'package:smartsales/features/invoice/invoice_list_screen.dart';
+import 'package:smartsales/features/customers/view/customer_list_screen.dart';
+import 'package:smartsales/features/invoice/view/invoice_list_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -23,7 +23,7 @@ class DashboardScreen extends StatelessWidget {
         child: Column(
           
           children: [
-            const SizedBox(height: 10),
+            const SizedBox(height: 25),
         
             // Title
             const Text(
@@ -34,7 +34,7 @@ class DashboardScreen extends StatelessWidget {
                 color: Colors.indigo,
               ),
             ),
-        SizedBox(height: 40),
+        SizedBox(height: 50),
             _buildMenuButton(
               icon: Icons.group,
               label: "Customer",

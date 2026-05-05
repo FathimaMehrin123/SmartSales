@@ -1,70 +1,6 @@
-// import 'package:flutter/material.dart';
-// import 'package:smartsales/features/customers/customer_model.dart';
-// import 'package:smartsales/features/invoice/create_invoice_screen.dart';
-
-// class CustomerDetailScreen extends StatelessWidget {
-//   final CustomerModel customer;
-
-//   const CustomerDetailScreen({super.key, required this.customer});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text("Customer Details"),
-//       ),
-//       body: Padding(
-//         padding: const EdgeInsets.all(16),
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             // 🧾 Customer Info
-//             Text(
-//               customer.name,
-//               style: const TextStyle(
-//                 fontSize: 22,
-//                 fontWeight: FontWeight.bold,
-//               ),
-//             ),
-
-//             const SizedBox(height: 10),
-
-//             Text("Phone: ${customer.phone}"),
-//             const SizedBox(height: 8),
-//             Text("Address: ${customer.address}"),
-
-//             const Spacer(),
-
-//             // 🚀 Start Sale Button
-//             SizedBox(
-//               width: double.infinity,
-//               child: ElevatedButton(
-//                 onPressed: () {
-//                   Navigator.push(
-//                     context,
-//                     MaterialPageRoute(
-//                       builder: (_) =>
-//                           CreateInvoiceScreen(customer: customer),
-//                     ),
-//                   );
-//                 },
-//                 child: const Text("Start Sale"),
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-
-
-
-
 import 'package:flutter/material.dart';
-import 'package:smartsales/features/customers/customer_model.dart';
-import 'package:smartsales/features/invoice/create_invoice_screen.dart';
+import 'package:smartsales/features/customers/model/customer_model.dart';
+import 'package:smartsales/features/invoice/view/create_invoice_screen.dart';
 
 class CustomerDetailScreen extends StatelessWidget {
   final CustomerModel customer;
@@ -78,21 +14,21 @@ class CustomerDetailScreen extends StatelessWidget {
         title: const Text("Customers"),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.only(top: 15,left: 10,right: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+         mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               customer.name.toUpperCase(),
               style: const TextStyle(
-                fontSize: 22,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
-
+        
             const SizedBox(height: 18),
-
+        
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -119,9 +55,9 @@ class CustomerDetailScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-
+        
                 const SizedBox(width: 18),
-
+        
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -147,9 +83,9 @@ class CustomerDetailScreen extends StatelessWidget {
                 ),
               ],
             ),
-
+        
             const SizedBox(height: 18),
-
+        
             const Text(
               "Customer Type: CASH",
               style: TextStyle(
@@ -157,56 +93,59 @@ class CustomerDetailScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-
+        
             
-
-            Container(
-              color: Colors.white,
-              width: double.infinity,
-              height: MediaQuery.of(
-             context   
-              ).size.height*0.6,
-              child: Center(
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => CreateInvoiceScreen(customer: customer,),
+                 const SizedBox(height: 10),
+        
+            Expanded(
+              child: Container(
+                color: Colors.white,
+                width: double.infinity,
+              //   height: MediaQuery.of(
+              //  context   
+              //   ).size.height*0.6,
+                child: Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => CreateInvoiceScreen(customer: customer,),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: 110,
+                      height: 110,
+                      decoration: BoxDecoration(
+                        color: Colors.indigo,
+                        borderRadius: BorderRadius.circular(14),
                       ),
-                    );
-                  },
-                  child: Container(
-                    width: 110,
-                    height: 110,
-                    decoration: BoxDecoration(
-                      color: Colors.indigo,
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.point_of_sale,
-                          color: Colors.white,
-                          size: 42,
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          "Sale",
-                          style: TextStyle(
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.point_of_sale,
                             color: Colors.white,
-                            fontSize: 14,
+                            size: 42,
                           ),
-                        ),
-                      ],
+                          SizedBox(height: 8),
+                          Text(
+                            "Sale",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-
-            const Spacer(),
+        
+           
           ],
         ),
       ),

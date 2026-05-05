@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smartsales/features/invoice/invoice_list_viewmodel.dart';
+import 'package:smartsales/features/invoice/viewmodel/invoice_list_viewmodel.dart';
 
 class InvoiceListScreen extends StatefulWidget {
   const InvoiceListScreen({super.key});

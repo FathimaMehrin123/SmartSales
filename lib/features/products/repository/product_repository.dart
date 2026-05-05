@@ -1,8 +1,8 @@
 import 'package:smartsales/core/network/api_client.dart';
 import 'package:smartsales/core/network/api_endpoints.dart';
-import 'package:smartsales/features/products/product_model.dart';
-import 'package:smartsales/features/products/product_type_model.dart';
-import 'package:smartsales/features/products/product_unit_model.dart';
+import 'package:smartsales/features/products/model/product_model.dart';
+import 'package:smartsales/features/products/model/product_type_model.dart';
+import 'package:smartsales/features/products/model/product_unit_model.dart';
 
 class ProductRepository {
   final ApiClient apiClient;

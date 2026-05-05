@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:smartsales/features/products/product_model.dart';
-import 'package:smartsales/features/products/product_repository.dart';
-import 'package:smartsales/features/products/product_type_model.dart';
-import 'package:smartsales/features/products/product_unit_model.dart';
+import 'package:smartsales/features/products/model/product_model.dart';
+import 'package:smartsales/features/products/repository/product_repository.dart';
+import 'package:smartsales/features/products/model/product_type_model.dart';
+import 'package:smartsales/features/products/model/product_unit_model.dart';
 
 class ProductViewModel extends ChangeNotifier {
   final ProductRepository repository;

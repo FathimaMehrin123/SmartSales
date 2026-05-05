@@ -1,6 +1,6 @@
 import 'package:smartsales/core/network/api_client.dart';
 import 'package:smartsales/core/network/api_endpoints.dart';
-import 'package:smartsales/features/auth/login_response_model.dart';
+import 'package:smartsales/features/auth/viewmodel/login_response_model.dart';
 
 class AuthRepository {
   final ApiClient apiClient;

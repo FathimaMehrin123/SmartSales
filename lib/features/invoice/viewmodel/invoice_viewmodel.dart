@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'cart_item_model.dart';
+import '../model/cart_item_model.dart';
 
 class InvoiceViewModel extends ChangeNotifier {
   final List<CartItemModel> _cartItems = [];
@@ -12,7 +12,9 @@ class InvoiceViewModel extends ChangeNotifier {
   double grandTotal = 0;
 
   bool isVatEnabled = true;
-
+bool isDiscountAmount = true;
+double discountValue = 0;
+double discountAmount = 0;
 Future<Map<String, dynamic>> buildInvoicePayload({
   required int customerId,
   required int userId,
@@ -42,47 +44,30 @@ Future<Map<String, dynamic>> buildInvoicePayload({
     "mrp": mrp,
 
     // temporary static values (API requires)
-    "product_type": List.filled(cartItems.length, 1),
-    "unit": List.filled(cartItems.length, 1529),
+   "product_type": cartItems.map((e) => e.productTypeId).toList(),
+"unit": cartItems.map((e) => e.unitId).toList(),
   };
 }
 
 
-  void addProduct(CartItemModel item) {
-    final index = _cartItems.indexWhere(
-      (element) => element.productId == item.productId,
-    );
+void addProduct(CartItemModel item) {
+  final index = _cartItems.indexWhere(
+    (element) =>
+        element.productId == item.productId &&
+        element.productTypeId == item.productTypeId &&
+        element.unitId == item.unitId,
+  );
 
-    if (index != -1) {
-      _cartItems[index].quantity++;
-    } else {
-      _cartItems.add(item);
-    }
-
-    calculateTotal();
-    notifyListeners();
+  if (index != -1) {
+    _cartItems[index].quantity += item.quantity;
+  } else {
+    _cartItems.add(item);
   }
 
-  void increaseQuantity(int productId) {
-    final index = _cartItems.indexWhere((item) => item.productId == productId);
-
-    if (index != -1) {
-      _cartItems[index].quantity++;
-      calculateTotal();
-      notifyListeners();
-    }
-  }
-
-  void decreaseQuantity(int productId) {
-    final index = _cartItems.indexWhere((item) => item.productId == productId);
-
-    if (index != -1 && _cartItems[index].quantity > 1) {
-      _cartItems[index].quantity--;
-      calculateTotal();
-      notifyListeners();
-    }
-  }
-
+  calculateTotal();
+  notifyListeners();
+}
+  
   void removeProduct(int productId) {
     _cartItems.removeWhere((item) => item.productId == productId);
     calculateTotal();
@@ -95,17 +80,40 @@ Future<Map<String, dynamic>> buildInvoicePayload({
     notifyListeners();
   }
 
-  void calculateTotal() {
-    total = _cartItems.fold(0, (sum, item) => sum + item.amount);
+void changeDiscountType(bool value) {
+  isDiscountAmount = value;
+  calculateTotal();
+  notifyListeners();
+}
 
-    tax = isVatEnabled ? total * 0.05 : 0;
+void updateDiscount(String value) {
+  discountValue = double.tryParse(value) ?? 0;
+  calculateTotal();
+  notifyListeners();
+}
+ void calculateTotal() {
+  total = _cartItems.fold(0, (sum, item) => sum + item.amount);
 
-    final beforeRound = total + tax;
-    grandTotal = beforeRound.roundToDouble();
-
-    roundOff = grandTotal - beforeRound;
+  // ✅ discount calculation
+  if (isDiscountAmount) {
+    discountAmount = discountValue;
+  } else {
+    discountAmount = total * discountValue / 100;
   }
 
+  if (discountAmount > total) {
+    discountAmount = total;
+  }
+
+  final afterDiscount = total - discountAmount;
+
+  tax = isVatEnabled ? afterDiscount * 0.05 : 0;
+
+  final beforeRound = afterDiscount + tax;
+  grandTotal = beforeRound.roundToDouble();
+
+  roundOff = grandTotal - beforeRound;
+}
   void clearCart() {
     _cartItems.clear();
     total = 0;

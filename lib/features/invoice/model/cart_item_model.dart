@@ -3,15 +3,22 @@ class CartItemModel {
   final String productName;
   final double rate;
   int quantity;
-final String productTypeName;
-final String unitName;
+
+  final int productTypeId;
+  final String productTypeName;
+
+  final int unitId;
+  final String unitName;
+
   CartItemModel({
     required this.productId,
     required this.productName,
     required this.rate,
-    this.quantity = 1,
-     required this.productTypeName,
-  required this.unitName,
+    required this.quantity,
+    required this.productTypeId,
+    required this.productTypeName,
+    required this.unitId,
+    required this.unitName,
   });
 
   double get amount => rate * quantity;

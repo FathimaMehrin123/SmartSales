@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:smartsales/features/auth/login_screen.dart';
+import 'package:smartsales/features/auth/view/login_screen.dart';
 import 'package:smartsales/features/dashboard/dashboard_screen.dart';
 
 

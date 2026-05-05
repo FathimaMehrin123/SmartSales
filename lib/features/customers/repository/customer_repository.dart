@@ -1,7 +1,7 @@
-import 'package:smartsales/features/customers/customer_model.dart';
+import 'package:smartsales/features/customers/model/customer_model.dart';
 
-import '../../../core/network/api_client.dart';
-import '../../../core/network/api_endpoints.dart';
+import '../../../../core/network/api_client.dart';
+import '../../../../core/network/api_endpoints.dart';
 
 class CustomerRepository {
   final ApiClient apiClient;

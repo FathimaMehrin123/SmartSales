@@ -1,5 +1,5 @@
 import 'package:smartsales/core/network/api_client.dart';
-import 'package:smartsales/features/invoice/invoice_model.dart';
+import 'package:smartsales/features/invoice/model/invoice_model.dart';
 
 class InvoiceRepository {
   final ApiClient apiClient;

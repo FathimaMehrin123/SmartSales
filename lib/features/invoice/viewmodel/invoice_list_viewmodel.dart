@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'invoice_model.dart';
-import 'invoice_repository.dart';
+import '../model/invoice_model.dart';
+import '../repository/invoice_repository.dart';
 
 class InvoiceListViewModel extends ChangeNotifier {
   final InvoiceRepository repository;

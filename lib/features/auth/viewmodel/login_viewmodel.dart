@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:smartsales/features/auth/auth_service.dart';
+import 'package:smartsales/features/auth/repository/auth_repository.dart';
 
 class LoginViewModel extends ChangeNotifier {
   final AuthRepository authRepository;

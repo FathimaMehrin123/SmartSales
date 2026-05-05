@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smartsales/features/customers/customer_model.dart';
-import 'package:smartsales/features/customers/customer_repository.dart';
+import 'package:smartsales/features/customers/model/customer_model.dart';
+import 'package:smartsales/features/customers/repository/customer_repository.dart';
 
 
 class CustomerViewModel extends ChangeNotifier {
