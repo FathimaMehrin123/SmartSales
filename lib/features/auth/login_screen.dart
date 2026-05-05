@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smartsales/features/auth/login_viewmodel.dart';
-import 'package:smartsales/features/customers/customer_list_screen.dart';
+import 'package:smartsales/features/dashboard/dashboard_screen.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
       );
       Navigator.pushReplacement(
   context,
-  MaterialPageRoute(builder: (_) => const CustomerListScreen()),
+  MaterialPageRoute(builder: (_) => const DashboardScreen()),
 );
 
       // Later navigate to Dashboard

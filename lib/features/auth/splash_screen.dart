@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smartsales/features/auth/login_screen.dart';
-import 'package:smartsales/features/customers/customer_list_screen.dart';
-import 'package:smartsales/features/homescreen.dart';
+import 'package:smartsales/features/dashboard/dashboard_screen.dart';
 
 
 
@@ -35,7 +34,7 @@ final token = prefs.getString('token');
       // Already logged in → Dashboard
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const CustomerListScreen()),
+        MaterialPageRoute(builder: (_) => const DashboardScreen()),
       );
     } else {
       // Not logged in → Login

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smartsales/features/products/product_model.dart';
 import 'package:smartsales/features/products/product_repository.dart';
+import 'package:smartsales/features/products/product_type_model.dart';
+import 'package:smartsales/features/products/product_unit_model.dart';
 
 class ProductViewModel extends ChangeNotifier {
   final ProductRepository repository;
@@ -33,4 +35,30 @@ class ProductViewModel extends ChangeNotifier {
       notifyListeners();
     }
   }
+  List<ProductTypeModel> productTypes = [];
+  Future<void> fetchProductTypes() async {
+  try {
+    productTypes = await repository.getProductTypes();
+    notifyListeners();
+  } catch (e) {
+    errorMessage = e.toString();
+    notifyListeners();
+  }
+}
+List<ProductUnitModel> productUnits = [];
+bool isDetailLoading = false;
+Future<void> fetchProductDetail(int productId) async {
+  isDetailLoading = true;
+  productUnits = [];
+  notifyListeners();
+
+  try {
+    productUnits = await repository.getProductDetail(productId: productId);
+  } catch (e) {
+    errorMessage = e.toString();
+  }
+
+  isDetailLoading = false;
+  notifyListeners();
+}
 }
