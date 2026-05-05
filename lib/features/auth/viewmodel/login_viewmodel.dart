@@ -42,7 +42,13 @@ class LoginViewModel extends ChangeNotifier {
   }
 } catch (e) {
   isLoading = false;
-  errorMessage = e.toString();
+
+  if (e.toString().contains("401")) {
+errorMessage = "Email or password is incorrect";
+  } else {
+    errorMessage = "Something went wrong. Please try again.";
+  }
+
   notifyListeners();
   return false;
 }

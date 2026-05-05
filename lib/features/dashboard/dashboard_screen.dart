@@ -1,10 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smartsales/features/auth/viewmodel/user_viewmodel.dart';
 import 'package:smartsales/features/customers/view/customer_list_screen.dart';
 import 'package:smartsales/features/invoice/view/invoice_list_screen.dart';
 
-class DashboardScreen extends StatelessWidget {
+class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
 
+  @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+  
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  @override
+void initState() {
+  super.initState();
+
+  Future.microtask(() async {
+    final prefs = await SharedPreferences.getInstance();
+    final userId = prefs.getInt('user_id') ?? 0;
+
+    context.read<UserViewModel>().fetchUser(userId);
+  });
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(

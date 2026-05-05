@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smartsales/features/customers/model/customer_model.dart';
+import 'package:smartsales/features/customers/view/widgets/info_row_widget.dart';
 import 'package:smartsales/features/invoice/view/create_invoice_screen.dart';
 
 class CustomerDetailScreen extends StatelessWidget {
@@ -62,19 +63,19 @@ class CustomerDetailScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _infoRow(
+                     InfoRowWidget(
                         icon: Icons.location_on,
                         text: customer.address.isEmpty
                             ? "N/A"
                             : customer.address,
                       ),
                       const SizedBox(height: 12),
-                      _infoRow(
+                     InfoRowWidget(
                         icon: Icons.phone,
                         text: customer.phone.isEmpty ? "N/A" : customer.phone,
                       ),
                       const SizedBox(height: 12),
-                      _infoRow(
+                     InfoRowWidget(
                         icon: Icons.email,
                         text: "N/A",
                       ),
@@ -101,9 +102,7 @@ class CustomerDetailScreen extends StatelessWidget {
               child: Container(
                 color: Colors.white,
                 width: double.infinity,
-              //   height: MediaQuery.of(
-              //  context   
-              //   ).size.height*0.6,
+            
                 child: Center(
                   child: GestureDetector(
                     onTap: () {
@@ -152,26 +151,5 @@ class CustomerDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _infoRow({
-    required IconData icon,
-    required String text,
-  }) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Icon(
-          icon,
-          color: Colors.grey,
-          size: 26,
-        ),
-        const SizedBox(width: 8),
-        Expanded(
-          child: Text(
-            text,
-            style: const TextStyle(fontSize: 15),
-          ),
-        ),
-      ],
-    );
-  }
+
 }

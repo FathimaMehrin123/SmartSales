@@ -4,6 +4,7 @@ import 'package:smartsales/core/network/api_client.dart';
 import 'package:smartsales/features/auth/repository/auth_repository.dart';
 import 'package:smartsales/features/auth/viewmodel/login_viewmodel.dart';
 import 'package:smartsales/features/auth/view/splash_screen.dart';
+import 'package:smartsales/features/auth/viewmodel/user_viewmodel.dart';
 import 'package:smartsales/features/customers/repository/customer_repository.dart';
 import 'package:smartsales/features/customers/viewmodel/customer_viewmodel.dart';
 import 'package:smartsales/features/invoice/viewmodel/invoice_list_viewmodel.dart';
@@ -18,6 +19,7 @@ void main() {
   final custRepository = CustomerRepository(apiClient);
   final productRepository = ProductRepository(apiClient);
   final invoiceRepository = InvoiceRepository(apiClient);
+  
   runApp(
     MultiProvider(
       providers: [
@@ -32,6 +34,7 @@ void main() {
         ChangeNotifierProvider(
           create: (_) => InvoiceListViewModel(invoiceRepository),
         ),
+        ChangeNotifierProvider(create: (context) => UserViewModel(authRepository),)
       ],
       child: const MyApp(),
     ),
@@ -45,7 +48,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp(
     theme: ThemeData(
-      scaffoldBackgroundColor: const Color.fromARGB(255, 145, 208, 233),
+      scaffoldBackgroundColor:Color(0xFFF2F3F7),
   appBarTheme: const AppBarTheme(
     backgroundColor: Colors.indigo,
     iconTheme: IconThemeData(color: Colors.white), // icons
